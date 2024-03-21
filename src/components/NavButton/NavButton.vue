@@ -6,7 +6,7 @@
 
 <script lang="ts">
 export default {
-  name: 'HeaderDefault',
+  name: 'NavButton',
   props: ['pathTo', 'title'],
   setup() {},
 };
