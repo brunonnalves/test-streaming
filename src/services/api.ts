@@ -1,17 +1,17 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-
+console.log(import.meta.env.VITE_API_TOKEN);
 const axiosInstance = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
   timeout: 5000,
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${import.meta.env.API_TOKEN}`,
+    Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
   },
 });
 
 const Rest = {
   get: async (url: string, config: AxiosRequestConfig<any> | undefined) => {
-    const response = await axiosInstance.get(url, config);
+    const response = await axiosInstance.get(url + '?language=pt-BR', config);
 
     return handleResponse(response);
   },

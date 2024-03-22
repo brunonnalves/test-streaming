@@ -10,7 +10,7 @@
   </header>
 </template>
 
-<script lang="ts">
+<script>
 import NavButton from '../NavButton/NavButton.vue';
 export default {
   name: 'HeaderDefault',

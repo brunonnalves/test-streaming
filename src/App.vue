@@ -5,7 +5,7 @@
   </main>
 </template>
 
-<script lang="ts">
+<script>
 import HeaderDefault from './components/Header/HeaderDefault.vue';
 export default {
   setup() {},
