@@ -1,5 +1,5 @@
 <template>
-  <header class="flex pl-10 h-15 bg-pageHeader items-center">
+  <header class="fixed w-full flex pl-10 h-15 bg-pageHeader items-center z-40">
     <img src="../../assets/vue.svg" class="h-10 w-27.5" />
     <NavButton
       v-for="option in menuOptions"

@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Movies from '../pages/Movies/Movies.vue';
+import Movie from '../pages/Movies/Movie.vue';
 import TVShows from '../pages/TVShows/TVShows.vue';
 
 const routes = [
   { path: '/', component: Movies },
   { path: '/home', component: Movies },
   { path: '/filmes', component: Movies },
+  { path: '/filmes/:id', component: Movie },
   { path: '/series', component: TVShows },
   { path: '/favoritos', component: Movies },
   { path: '/:pathMatch(.*)*', component: Movies },

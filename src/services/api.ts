@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-console.log(import.meta.env.VITE_API_TOKEN);
+
 const axiosInstance = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
   timeout: 5000,

@@ -1,5 +1,9 @@
 <template>
-  <div class="w-40 md:w-80 mb-4 rounded-lg bg-evenRow mx-2 hover:shadow-xl hover:scale-105">
+  <router-link
+    as="div"
+    :to="'./filmes/' + show.id"
+    class="w-40 md:w-80 mb-8 rounded-lg bg-evenRow mx-2 hover:shadow-xl hover:scale-105 cursor-pointer"
+  >
     <img
       :src="'https://image.tmdb.org/t/p/original' + show.poster_path"
       class="rounded-lg w-full"
@@ -19,13 +23,10 @@
         {{ show.overview }}
       </p>
     </div>
-    <div>
-      <button>ver mais</button>
-    </div>
-  </div>
+  </router-link>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'PosterCard',
   props: ['show'],

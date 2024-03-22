@@ -1,6 +1,6 @@
 <template>
   <HeaderDefault />
-  <main class="flex flex-col items-center flex-1">
+  <main class="flex flex-col items-center">
     <router-view />
   </main>
 </template>
