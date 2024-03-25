@@ -1,4 +1,4 @@
-## Comece a usar
+## Comece a usar o StreamingFy
 
 Você pode visualizar a aplicação no link abaixo:
 

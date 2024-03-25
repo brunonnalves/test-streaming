@@ -78,19 +78,24 @@
 </template>
 <script lang="ts">
 import { ref } from 'vue';
+import { useStore } from 'vuex';
 import { updateLocalStorage, checkShowInLocalStorage } from '../../utils/localStorage';
 export default {
   name: 'ShowDetails',
   props: ['show'],
   setup(props) {
+    const store = useStore();
     const isShowInMyFavList = ref(checkShowInLocalStorage(props.show));
     const handleFavButtonClick = (movie: any) => {
       updateLocalStorage(movie);
       isShowInMyFavList.value = checkShowInLocalStorage(movie);
+
+      store.dispatch('showSnackbar', { message: 'Adicionado à sua lista', type: 'success' });
     };
     const handleRemoveFavButtonClick = (movie: any) => {
       updateLocalStorage(movie, true);
       isShowInMyFavList.value = checkShowInLocalStorage(movie);
+      store.dispatch('showSnackbar', { message: 'Removido à sua lista', type: 'error' });
     };
     return { isShowInMyFavList, handleFavButtonClick, handleRemoveFavButtonClick };
   },

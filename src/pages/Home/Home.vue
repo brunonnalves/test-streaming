@@ -7,6 +7,7 @@
 
 <script>
 import { onMounted, ref } from 'vue';
+import { useStore } from 'vuex';
 import Rest from '../../services/api';
 import PosterCard from '../../components/PosterCard/PosterCard.vue';
 import LoadCard from '../../components/LoadCard/LoadCard.vue';
@@ -17,14 +18,18 @@ export default {
     const pageToIncrement = ref(1);
 
     const getMoreShows = async () => {
-      let list = [...shows.value];
-      const response = await Rest.get('/trending/all/day', {
-        params: { page: pageToIncrement.value },
-      });
+      try {
+        let list = [...shows.value];
+        const response = await Rest.get('/trending/all/day', {
+          params: { page: pageToIncrement.value },
+        });
 
-      list = list.concat(response.data.results);
-      shows.value = list;
-      pageToIncrement.value++;
+        list = list.concat(response.data.results);
+        shows.value = list;
+        pageToIncrement.value++;
+      } catch (error) {
+        store.dispatch('showSnackbar', { message: 'Houve um erro de servidor', type: 'error' });
+      }
     };
     onMounted(async () => {
       await getMoreShows();
