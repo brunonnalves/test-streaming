@@ -2,7 +2,7 @@
 
 Você pode visualizar a aplicação no link abaixo:
 
-https://test-streaming.onrender.com
+https://test-streaming-5ryyrvyzi-brunonnalves-projects.vercel.app
 
 Caso queria rodar localmente e implementar modificações siga o passo a passo:
 
