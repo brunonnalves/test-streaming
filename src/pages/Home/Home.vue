@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { onMounted, ref } from 'vue';
 import Rest from '../../services/api';
 import PosterCard from '../../components/PosterCard/PosterCard.vue';

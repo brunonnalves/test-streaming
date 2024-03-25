@@ -11,6 +11,6 @@
 export default {
   name: 'LoadCard',
   props: ['onclick'],
-  setup(props) {},
+  setup() {},
 };
 </script>

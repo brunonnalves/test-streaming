@@ -38,6 +38,6 @@
 export default {
   name: 'PosterCard',
   props: ['show', 'type'],
-  setup(props) {},
+  setup() {},
 };
 </script>

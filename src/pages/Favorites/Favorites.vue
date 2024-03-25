@@ -14,7 +14,6 @@
 
 <script lang="ts">
 import { onMounted, ref } from 'vue';
-import Rest from '../../services/api.ts';
 import { getFavoriteShows } from '../../utils/localStorage.ts';
 import PosterCard from '../../components/PosterCard/PosterCard.vue';
 
