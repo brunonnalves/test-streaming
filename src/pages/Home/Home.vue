@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-evenly pt-24">
     <PosterCard v-for="show in shows" :key="show.title" :show="show" :type="show.media_type" />
+    <LoadCard :onclick="() => getMoreShows()" />
   </div>
 </template>
 
@@ -8,18 +9,29 @@
 import { onMounted, ref } from 'vue';
 import Rest from '../../services/api';
 import PosterCard from '../../components/PosterCard/PosterCard.vue';
+import LoadCard from '../../components/LoadCard/LoadCard.vue';
 
 export default {
   setup() {
     const shows = ref([]);
+    const pageToIncrement = ref(1);
 
+    const getMoreShows = async () => {
+      let list = [...shows.value];
+      const response = await Rest.get('/trending/all/day', {
+        params: { page: pageToIncrement.value },
+      });
+
+      list = list.concat(response.data.results);
+      shows.value = list;
+      pageToIncrement.value++;
+    };
     onMounted(async () => {
-      const response = await Rest.get('/trending/all/day');
-      shows.value = response.data.results;
+      await getMoreShows();
     });
 
-    return { shows };
+    return { shows, getMoreShows };
   },
-  components: { PosterCard },
+  components: { PosterCard, LoadCard },
 };
 </script>

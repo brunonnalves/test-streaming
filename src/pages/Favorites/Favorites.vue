@@ -7,7 +7,7 @@
       :key="show.title"
       :show="show"
       v-if="shows && shows.length > 0"
-      :type="show.season ? 'tv' : 'movie'"
+      :type="show.seasons ? 'tv' : 'movie'"
     />
   </div>
 </template>

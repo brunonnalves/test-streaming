@@ -9,12 +9,21 @@
       <div>
         <h1 class="text-3xl font-bold mb-4">{{ show.title }}</h1>
         <span class="flex gap-4 mb-4">
-          <p>{{ new Date(show.release_date).getFullYear() }}</p>
+          <p>
+            {{
+              show.release_date
+                ? new Date(show.release_date).getFullYear()
+                : new Date(show.first_air_date).getFullYear()
+            }}
+          </p>
           <p class="text-green-500">
             {{ Math.floor(show.vote_average * 100) / 100 }}
           </p>
           <p>|</p>
-          <p>{{ show.runtime }}min</p>
+          <p v-if="show.runtime">{{ show.runtime }}min</p>
+          <p v-if="show.number_of_seasons">
+            {{ show.number_of_seasons }} Temporadas - {{ show.number_of_episodes }} Episódios
+          </p>
         </span>
         <p>{{ show.overview }}</p>
         <span class="flex gap-2 mt-8">
