@@ -1,7 +1,17 @@
-export const updateLocalStorage = (show: any) => {
+export const updateLocalStorage = (show: any, remove?: boolean) => {
   const favoriteList = localStorage.getItem('myFavoriteList');
   let newFavoriteList = favoriteList ? JSON.parse(favoriteList) : [];
-  newFavoriteList.push(show);
+  console.log(remove);
+
+  if (!remove) {
+    newFavoriteList.push(show);
+  } else {
+    const index = newFavoriteList.findIndex((obj: any) => obj.id === show.id);
+    console.log(index);
+    if (index !== -1) {
+      newFavoriteList.splice(index, 1);
+    }
+  }
 
   localStorage.setItem('myFavoriteList', JSON.stringify(newFavoriteList));
 };
