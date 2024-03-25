@@ -2,7 +2,7 @@
 
 Você pode visualizar a aplicação no link abaixo:
 
-https://test-streaming-5ryyrvyzi-brunonnalves-projects.vercel.app
+[https://test-streaming-5ryyrvyzi-brunonnalves-projects.vercel.app](https://test-streaming-lilac.vercel.app)
 
 Caso queria rodar localmente e implementar modificações siga o passo a passo:
 
