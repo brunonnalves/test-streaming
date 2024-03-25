@@ -7,7 +7,8 @@
       class="text-white h-screen md:w-6/12 flex flex-wrap p-8 md:p-24 items-center justify-start z-40"
     >
       <div>
-        <h1 class="text-3xl font-bold mb-4">{{ show.title }}</h1>
+        <h1 class="text-3xl font-bold mb-4" v-if="show.title">{{ show.title }}</h1>
+        <h1 class="text-3xl font-bold mb-4" v-if="show.name">{{ show.name }}</h1>
         <span class="flex gap-4 mb-4">
           <p>
             {{
@@ -36,7 +37,11 @@
             <a
               class="flex items-center gap-1 md:gap-2"
               target="_blank"
-              :href="'https://www.youtube.com/results?search_query=' + show.title + ' Trailer'"
+              :href="
+                'https://www.youtube.com/results?search_query=' +
+                (show.title ? show.title : show.name) +
+                ' Trailer'
+              "
             >
               <img src="../../assets/icons/play-icon.svg" class="h-4 font-bold" />
               Tailer

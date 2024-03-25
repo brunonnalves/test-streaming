@@ -18,7 +18,15 @@
       </div>
     </div>
     <div class="p-6">
-      <p class="text-xs mb-1 whitespace-nowrap overflow-hidden text-ellipsis">{{ show.title }}</p>
+      <p
+        class="text-sm mb-1 whitespace-nowrap overflow-hidden text-ellipsis"
+        v-if="type === 'movie'"
+      >
+        {{ show.title }}
+      </p>
+      <p class="text-sm mb-1 whitespace-nowrap overflow-hidden text-ellipsis" v-if="type === 'tv'">
+        {{ show.name }}
+      </p>
       <p class="h-20 md:h-40 text-xs overflow-auto">
         {{ show.overview }}
       </p>

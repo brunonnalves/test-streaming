@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-wrap justify-evenly pt-24">
-    <PosterCard v-for="tvShow in tvShows" :key="tvShow.title" :show="tvShow" type="show" />
+    <PosterCard v-for="tvShow in tvShows" :key="tvShow.title" :show="tvShow" type="tv" />
     <LoadCard :onclick="() => getMoreShows()" />
   </div>
 </template>
