@@ -1,6 +1,6 @@
 <template>
   <header class="fixed w-full flex pl-10 h-15 bg-pageHeader items-center z-40">
-    <router-link to="./home">
+    <router-link to="/home">
       <img src="../../assets/vue.svg" class="h-10 w-27.5 hidden md:block cursor-pointer" />
     </router-link>
     <NavButton
