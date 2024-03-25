@@ -10,7 +10,7 @@ const axiosInstance = axios.create({
 });
 
 const Rest = {
-  get: async (url: string, config: AxiosRequestConfig<any> | undefined) => {
+  get: async (url: string, config?: AxiosRequestConfig<any> | undefined) => {
     const response = await axiosInstance.get(url + '?language=pt-BR', config);
 
     return handleResponse(response);

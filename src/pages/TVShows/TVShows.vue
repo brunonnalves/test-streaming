@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-wrap justify-evenly p-2">
-    <PosterCard v-for="tvShow in tvShows" :key="tvShow.title" :show="tvShow" />
+  <div class="flex flex-wrap justify-evenly pt-24">
+    <PosterCard v-for="tvShow in tvShows" :key="tvShow.title" :show="tvShow" type="show" />
   </div>
 </template>
 
@@ -15,7 +15,6 @@ export default {
 
     onMounted(async () => {
       const response = await Rest.get('/tv/popular');
-      console.log(response.data);
       tvShows.value = response.data.results;
     });
 

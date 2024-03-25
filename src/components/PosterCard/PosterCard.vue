@@ -1,7 +1,7 @@
 <template>
   <router-link
     as="div"
-    :to="'./filmes/' + show.id"
+    :to="type === 'movie' ? './filmes/' + show.id : './series/' + show.id"
     class="w-40 md:w-80 mb-8 rounded-lg bg-evenRow mx-2 hover:shadow-xl hover:scale-105 cursor-pointer"
   >
     <img
@@ -29,7 +29,7 @@
 <script lang="ts">
 export default {
   name: 'PosterCard',
-  props: ['show'],
+  props: ['show', 'type'],
   setup(props) {},
 };
 </script>

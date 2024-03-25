@@ -1,13 +1,11 @@
 export const updateLocalStorage = (show: any, remove?: boolean) => {
   const favoriteList = localStorage.getItem('myFavoriteList');
   let newFavoriteList = favoriteList ? JSON.parse(favoriteList) : [];
-  console.log(remove);
 
   if (!remove) {
     newFavoriteList.push(show);
   } else {
     const index = newFavoriteList.findIndex((obj: any) => obj.id === show.id);
-    console.log(index);
     if (index !== -1) {
       newFavoriteList.splice(index, 1);
     }
@@ -29,4 +27,10 @@ export const checkShowInLocalStorage = (show: any) => {
   } else {
     return false;
   }
+};
+
+export const getFavoriteShows = () => {
+  const favoriteList = localStorage.getItem('myFavoriteList');
+  const list = favoriteList ? JSON.parse(favoriteList) : [];
+  return list;
 };
