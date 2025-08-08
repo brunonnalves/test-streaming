@@ -2,7 +2,7 @@
   <router-link
     as="div"
     :to="type === 'movie' ? './filmes/' + show.id : './series/' + show.id"
-    class="w-40 md:w-80 mb-8 rounded-lg bg-evenRow mx-2 hover:shadow-xl hover:scale-105 cursor-pointer"
+    class="w-40 md:w-80 mb-8 rounded-lg bg-evenRow mx-2 hover:shadow-xl hover:scale-105 cursor-pointer transition duration-300 ease-in-out"
   >
     <img
       :src="'https://image.tmdb.org/t/p/original' + show.poster_path"
