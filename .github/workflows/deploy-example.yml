@@ -1,0 +1,49 @@
+name: Deploy Service
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Definir variáveis
+        run: |
+          echo "TAG=latest" >> $GITHUB_ENV
+          echo "REGISTRY=registry-proxy.nan.dev.br" >> $GITHUB_ENV
+
+      - name: Criar arquivo .env.prod com variáveis do GitHub Secrets
+        run: |
+          echo "VITE_API_TOKEN=${{ secrets.VITE_API_TOKEN }}" >> .env.prod
+          echo "IMAGE_NAME=${{ secrets.IMAGE_NAME }}" >> .env.prod
+
+      - name: Login no Docker Registry
+        run: |
+          echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login ${{ env.REGISTRY }} -u "${{ secrets.REGISTRY_USERNAME }}" --password-stdin
+
+      - name: Build da imagem Docker
+        run: |
+          docker build \
+            --platform linux/amd64 \
+            --build-arg VITE_API_TOKEN=${{ secrets.VITE_API_TOKEN }} \
+            -t ${{ env.REGISTRY }}/${{ secrets.IMAGE_NAME }}:$TAG .
+
+      - name: Push da imagem Docker
+        run: |
+          docker push ${{ env.REGISTRY }}/${{ secrets.IMAGE_NAME }}:$TAG
+
+      - name: Acionar Webhook para deploy no servidor
+        run: |
+          curl --fail -X POST https://deploy-proxy.nan.dev.br \
+            -H "Authorization: Bearer ${{ secrets.DEPLOY_TOKEN }}" \
+            -F "stack=streamingfy" \
+            -F "image_name=${{ secrets.IMAGE_NAME }}" \
+            -F "service=streamingfy" \
+            -F "env_file=@.env.prod" \
+            -F "compose_file=@docker-compose.prod.yml"

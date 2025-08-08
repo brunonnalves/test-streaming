@@ -1,0 +1,17 @@
+services:
+  streamingfy:
+    image: localhost:5000/${IMAGE_NAME}:latest
+    container_name: streamingfy
+    restart: always
+    platform: linux/amd64
+    networks:
+      - pangolin-net
+      - portainer-net
+
+networks:
+  pangolin-net:
+    external: true
+  cloudbeaver-net:
+    external: true
+  portainer-net:
+    external: true
